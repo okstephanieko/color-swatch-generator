@@ -5,16 +5,26 @@
   "main": "index.html",
   "scripts": {
     "start": "parcel index.html --open",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html",
+    "test:unit": "mocha ./src/**/*.spec.js --require esm"
   },
   "dependencies": {
     "@shoelace-style/shoelace": "^2.0.0-beta.38",
+    "core-js": "^3.10.2",
     "lit-html": "1.3.0",
     "parcel-bundler": "^1.6.1",
+    "regenerator-runtime": "^0.13.7",
     "values.js": "2.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.2.0"
+    "@babel/core": "7.2.0",
+    "@babel/preset-env": "^7.13.15",
+    "chai": "^4.3.4",
+    "eslint": "^7.24.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "esm": "^3.2.25",
+    "mocha": "^8.3.2"
   },
   "resolutions": {
     "@babel/preset-env": "7.13.8"
