@@ -1,0 +1,5 @@
+.DS_Store
+.cache
+.codesandbox
+/dist
+/node_modules
