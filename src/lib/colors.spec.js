@@ -18,4 +18,8 @@ describe('Color swatch helper', () => {
     assert(!Number.isNaN(swatch[0].hex), 'returned value is not hex');
     assert.strictEqual(swatch[0].hex.length, 6);
   });
+  it('returns changed base color', () => {
+    const newColor = 'bbf7d0';
+    assert.equal(helper.setBaseColor(`#${newColor}`), newColor);
+  });
 });
