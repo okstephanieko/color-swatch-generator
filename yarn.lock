@@ -3912,14 +3912,16 @@ lit-element@^3.0.0-rc.1:
     "@lit/reactive-element" "^1.0.0-rc.1"
     lit-html "^2.0.0-rc.1"
 
-lit-html@1.3.0:
-  version "1.3.0"
-  resolved "https://registry.npmjs.org/lit-html/-/lit-html-1.3.0.tgz"
-  integrity sha512-0Q1bwmaFH9O14vycPHw8C/IeHMk/uSDldVLIefu/kfbTBGIc44KGH6A8p1bDfxUfHdc8q6Ct7kQklWoHgr4t1Q==
-
 lit-html@^2.0.0-pre.6, lit-html@^2.0.0-rc.1:
   version "2.0.0-rc.2"
   resolved "https://registry.npmjs.org/lit-html/-/lit-html-2.0.0-rc.2.tgz"
+  integrity sha512-rl3vtIQ0jq6r0GVbg+57Et9ra+iNhiz/v5V7uPTb6VxnjJaCCYKI7WkzKNlyzjMM2N/ytih3Uxb5vyyaOpjb0Q==
+  dependencies:
+    "@types/trusted-types" "^1.0.1"
+
+lit-html@^2.0.0-rc.2:
+  version "2.0.0-rc.2"
+  resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-2.0.0-rc.2.tgz#c7ac652af1df7e5d8e32a3e6130221766d09cbde"
   integrity sha512-rl3vtIQ0jq6r0GVbg+57Et9ra+iNhiz/v5V7uPTb6VxnjJaCCYKI7WkzKNlyzjMM2N/ytih3Uxb5vyyaOpjb0Q==
   dependencies:
     "@types/trusted-types" "^1.0.1"
