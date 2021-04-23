@@ -1,3 +1,22 @@
+export function createAppReducer(modules) {
+  const childReducers = modules.map((module) => ({
+    events: Object.values(module.events),
+    reducer: module.reducer,
+  }));
+
+  const appReducer = (prevState, event) => {
+    const targetModule = childReducers.find((module) => module.events.includes(event.type));
+    return targetModule.reducer(prevState, event);
+  };
+
+  return appReducer;
+}
+
+export const appState = (modules) => modules.reduce((currentState, { state }) => ({
+  ...currentState,
+  ...state,
+}), {});
+
 function createStore(reducer, initialState) {
   let state = initialState;
   const listeners = {};
@@ -29,4 +48,8 @@ function createStore(reducer, initialState) {
   };
 }
 
-export default createStore;
+function createCombinedStore(modules) {
+  return createStore(createAppReducer(modules), appState(modules));
+}
+
+export { createStore, createCombinedStore };
