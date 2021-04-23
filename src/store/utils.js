@@ -12,9 +12,9 @@ export function createAppReducer(modules) {
   return appReducer;
 }
 
-export const appState = (modules) => modules.reduce((currentState, { state }) => ({
+export const appState = (modules) => modules.reduce((currentState, { defaultState }) => ({
   ...currentState,
-  ...state,
+  ...defaultState,
 }), {});
 
 function createStore(reducer, initialState) {
