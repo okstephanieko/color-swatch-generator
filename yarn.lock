@@ -3912,16 +3912,9 @@ lit-element@^3.0.0-rc.1:
     "@lit/reactive-element" "^1.0.0-rc.1"
     lit-html "^2.0.0-rc.1"
 
-lit-html@^2.0.0-pre.6, lit-html@^2.0.0-rc.1:
+lit-html@^2.0.0-pre.6, lit-html@^2.0.0-rc.1, lit-html@^2.0.0-rc.2:
   version "2.0.0-rc.2"
   resolved "https://registry.npmjs.org/lit-html/-/lit-html-2.0.0-rc.2.tgz"
-  integrity sha512-rl3vtIQ0jq6r0GVbg+57Et9ra+iNhiz/v5V7uPTb6VxnjJaCCYKI7WkzKNlyzjMM2N/ytih3Uxb5vyyaOpjb0Q==
-  dependencies:
-    "@types/trusted-types" "^1.0.1"
-
-lit-html@^2.0.0-rc.2:
-  version "2.0.0-rc.2"
-  resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-2.0.0-rc.2.tgz#c7ac652af1df7e5d8e32a3e6130221766d09cbde"
   integrity sha512-rl3vtIQ0jq6r0GVbg+57Et9ra+iNhiz/v5V7uPTb6VxnjJaCCYKI7WkzKNlyzjMM2N/ytih3Uxb5vyyaOpjb0Q==
   dependencies:
     "@types/trusted-types" "^1.0.1"
@@ -5527,6 +5520,13 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
+rxjs@^6.6.7:
+  version "6.6.7"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.6.7.tgz#90ac018acabf491bf65044235d5863c4dab804c9"
+  integrity sha512-hTdwr+7yYNIT5n4AMYp85KA6yw2Va0FLa3Rguvbpa4W3I5xynaBZo41cM3XM+4Q6fRMj3sBYIR1VAmZMXYJvRQ==
+  dependencies:
+    tslib "^1.9.0"
+
 safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@^5.1.1, safe-buffer@^5.1.2, safe-buffer@^5.2.0, safe-buffer@~5.2.0:
   version "5.2.1"
   resolved "https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.2.1.tgz"
@@ -6188,6 +6188,11 @@ tsconfig-paths@^3.9.0:
     json5 "^1.0.1"
     minimist "^1.2.0"
     strip-bom "^3.0.0"
+
+tslib@^1.9.0:
+  version "1.14.1"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
+  integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
 tty-browserify@0.0.0:
   version "0.0.0"
