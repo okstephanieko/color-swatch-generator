@@ -1,32 +1,24 @@
 import { html } from 'lit-html';
 import Values from 'values.js';
+import { map } from 'rxjs/operators';
 
 import { getBaseObservable } from '../lib/handlers';
 import observe from '../lib/observeDirective';
-import observerTemplate from '../lib/observerTemplate';
 
 import ColorSwatchItem from './ColorSwatchItem';
 
 const model = (colorValue) => new Values(colorValue);
-const { templateValue, updateTemplateValue, observer } = observerTemplate([]);
 
-const listener = (color) => {
-  function swatchModel(raw) {
-    return raw.map((item) => ({ weight: item.weight, hex: item.hex }));
-  }
-  updateTemplateValue(
-    swatchModel(model(color).all(15)).map(
-      (item) => html`<li>
-        ${ColorSwatchItem(item)}
-      </li>`,
-    ),
-  );
-};
-
-getBaseObservable().subscribe(observer(listener));
+const colorChildrenObservable = getBaseObservable().pipe(
+  map((colorValue) => model(colorValue).all(15).map(
+    (childColor) => html`<li>
+      ${ColorSwatchItem({ weight: childColor.weight, hex: childColor.hex })}
+    </li>`,
+  )),
+);
 
 const ColorSwatch = () => html`<ul>
-  ${observe(templateValue)}
+  ${observe(colorChildrenObservable)}
 </ul>`;
 
 export default ColorSwatch;
