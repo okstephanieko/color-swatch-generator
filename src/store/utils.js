@@ -1,55 +1,27 @@
-export function createAppReducer(modules) {
-  const childReducers = modules.map((module) => ({
-    events: Object.values(module.events),
-    reducer: module.reducer,
-  }));
+import { BehaviorSubject } from 'rxjs';
+import { map, distinctUntilChanged } from 'rxjs/operators';
 
-  const appReducer = (prevState, event) => {
-    const targetModule = childReducers.find((module) => module.events.includes(event.type));
-    return targetModule.reducer(prevState, event);
-  };
+function createStore(reducer, defaultState) {
+  const state = new BehaviorSubject({ ...defaultState });
 
-  return appReducer;
-}
-
-export const appState = (modules) => modules.reduce((currentState, { defaultState }) => ({
-  ...currentState,
-  ...defaultState,
-}), {});
-
-function createStore(reducer, initialState) {
-  let state = initialState;
-  const listeners = {};
-
-  function dispatch(eventType, payload) {
-    state = reducer(state, { type: eventType, payload });
-    if (Object.keys(listeners).includes(eventType)) {
-      listeners[eventType].forEach((cb) => cb());
-    }
-  }
-
-  function subscribe(eventType, callback) {
-    listeners[eventType] = (Object.keys(listeners).includes(eventType))
-      ? [...listeners[eventType], callback]
-      : [callback];
-
-    return function unsubscribe() {
-      const index = listeners[eventType].indexOf(callback);
-      listeners[eventType].splice(index, 1);
-    };
+  function dispatch(event) {
+    const newStateValues = reducer(state.getValue(), event);
+    state.next({ ...newStateValues });
   }
 
   return {
     get state() {
-      return state;
+      return state.getValue();
+    },
+    getObservable(getter) {
+      return state.asObservable().pipe(
+        map((stateObj) => getter(stateObj)),
+        distinctUntilChanged(),
+      );
     },
     dispatch,
-    subscribe,
   };
 }
 
-function createCombinedStore(modules) {
-  return createStore(createAppReducer(modules), appState(modules));
-}
-
-export { createStore, createCombinedStore };
+export default createStore;
+export { createStore };
