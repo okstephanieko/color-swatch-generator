@@ -6,22 +6,24 @@ class Observer extends AsyncDirective {
     super(partInfo);
     this.observable = undefined;
     this.unsubscribe = undefined;
-    this.previousValue = undefined;
   }
 
   subscribe(observable) {
     this.unsubscribe = observable.subscribe((value) => {
       this.setValue(value);
-      this.previousValue = value;
     });
+  }
+
+  cacheObservable(observable) {
+    this.observable = observable;
+    if (this.unsubscribe) {
+      this.unsubscribe();
+    }
   }
 
   render(observable) {
     if (this.observable !== observable) {
-      this.observable = observable;
-      if (this.unsubscribe) {
-        this.unsubscribe();
-      }
+      this.cacheObservable(observable);
       this.subscribe(observable);
     }
 
