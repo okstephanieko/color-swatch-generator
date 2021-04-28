@@ -1,10 +1,7 @@
 import { html } from 'lit-html';
 
-import { setColor } from '../lib/handlers';
-
-const ColorPicker = () => {
+const ColorPicker = ({ defaultColor, onColorChange }) => {
   let color = '';
-  // const placeholder = store.state.currentColor.getBaseColor();
 
   function onInput(event) {
     color = event.target.value;
@@ -12,13 +9,13 @@ const ColorPicker = () => {
 
   function onSubmit(event) {
     event.preventDefault();
-    setColor(color);
+    onColorChange(color);
   }
 
   return html`<form @submit=${onSubmit}>
     <label>
       <span>Selected color: </span>
-      <input type="text" .value=${color} @input=${onInput} />
+      <input type="text" .value=${color} .placeholder=${defaultColor} @input=${onInput} />
     </label>
   </form>`;
 };
