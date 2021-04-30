@@ -15,10 +15,10 @@ const colorState = (defaultValue = '#eeeeee', defaultWeight = 15) => {
   }
 
   return {
-    get state() {
+    getState() {
       return state.getValue();
     },
-    get observable() {
+    getObservable() {
       return state.asObservable();
     },
     changeBaseColor,

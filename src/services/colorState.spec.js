@@ -7,7 +7,7 @@ describe('color state', () => {
   const state = colorState();
   let value;
 
-  const observable = state.observable.pipe(
+  const observable = state.getObservable().pipe(
     map((state) => state.baseColor),
     distinctUntilChanged(),
   );
@@ -18,7 +18,7 @@ describe('color state', () => {
   });
 
   it('returns default value', () => {
-    assert.equal(value, state.state.baseColor);
+    assert.equal(value, state.getState().baseColor);
   });
 
   it('set value and returns new value', () => {

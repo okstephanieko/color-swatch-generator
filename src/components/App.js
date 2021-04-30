@@ -7,12 +7,12 @@ import ColorPicker from './ColorPicker';
 import ColorSwatchContainer from './ColorSwatchContainer';
 
 const App = () => {
-  const { state, observable, changeBaseColor } = colorState();
+  const { getState, getObservable, changeBaseColor } = colorState();
   const Header = ColorPicker({
-    defaultColor: state.baseColor,
+    defaultColor: getState().baseColor,
     onColorChange: changeBaseColor,
   });
-  const Content = ColorSwatchContainer(observable);
+  const Content = ColorSwatchContainer(getObservable());
 
   return html`${AppLayout({ Header, Content })}`;
 };
