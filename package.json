@@ -25,7 +25,8 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "esm": "^3.2.25",
-    "mocha": "^8.3.2"
+    "mocha": "^8.3.2",
+    "sass": "^1.32.12"
   },
   "resolutions": {
     "@babel/preset-env": "7.13.8"
