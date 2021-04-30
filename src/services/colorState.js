@@ -1,6 +1,6 @@
 import { BehaviorSubject } from 'rxjs';
 
-const colorState = (defaultValue = '#eeeeee', defaultWeight = 15) => {
+const colorState = (defaultValue = '#4a90e2', defaultWeight = 15) => {
   const state = new BehaviorSubject({
     baseColor: defaultValue,
     weight: defaultWeight,
