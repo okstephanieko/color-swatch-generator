@@ -1,5 +1,7 @@
 @import '../node_modules/@shoelace-style/shoelace/dist/themes/base.css';
 
+$white: var(--sl-color-white);
+
 $width-sm: 640px;
 $width-md: 768px;
 $width-lg: 1024px;
@@ -11,35 +13,62 @@ $space-sm: var(--sl-spacing-small);
 $space-base: var(--sl-spacing-medium);
 $space-lg: var(--sl-spacing-large);
 $space-xl: var(--sl-spacing-x-large);
+$space-2xl: var(--sl-spacing-xx-large);
+$space-3xl: var(--sl-spacing-xxx-large);
+$space-4xl: var(--sl-spacing-xxxx-large);
+
+$shadow-md: var(--sl-shadow-medium);
 
 :root {
-  --width-sm: $width-sm;
-  --width-md: $width-md;
-  --width-lg: $width-lg;
-  --width-xl: $width-xl;
-  --width-2xl: $width-2xl;
+  --color-white: #{$white};
+
+  --width-sm: #{$width-sm};
+  --width-md: #{$width-md};
+  --width-lg: #{$width-lg};
+  --width-xl: #{$width-xl};
+  --width-2xl: #{$width-2xl};
   
-  --space-sm: $space-sm;
-  --space-md: $space-md;
-  --space-lg: $space-lg;
-  --space-xl: $space-xl;
-  --space-2xl: $space-2xl;
+  --space-sm: #{$space-sm};
+  --space-base: #{$space-base};
+  --space-lg: #{$space-lg};
+  --space-xl: #{$space-xl};
+  --space-2xl: #{$space-2xl};
+  --space-3xl: #{$space-3xl};
+  --space-4xl: #{$space-4xl};
+
+  --shadow-md: #{$shadow-md};
 }
 
 body {
   font-family: var(--sl-font-sans);
+  margin: 0;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: var(--space-4xl);
+  padding: 0 var(--space-base);
+  background-color: var(--color-white);
+  -webkit-box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-md);
+  z-index:2
 }
 
 ul {
   display: flex;
   flex-wrap: wrap;
-  margin: -0.5em;
-  list-style: none;
+  margin: 0em;
   padding: 0;
+  list-style: none;
 
   > li {
-    flex: 1 0 10em;
-    margin: 0.5em;
+    flex: 1 0 12em;
+    margin: 0em;
   }
 }
 
@@ -47,7 +76,10 @@ ul {
   display: block;
   max-width: var(--width-2xl);
   margin: auto;
-  padding: $space-sm $space-lg;
+
+  &--lg, &--md, &--sm, &--fluid {
+    @extend .container;
+  }
 
   &--lg {
     max-width: var(--width-lg);
@@ -59,6 +91,10 @@ ul {
 
   &--sm {
     max-width: var(--width-sm);
+  }
+
+  &--fluid {
+    max-width: none;
   }
 }
 
