@@ -1,0 +1,69 @@
+@import '../node_modules/@shoelace-style/shoelace/dist/themes/base.css';
+
+$width-sm: 640px;
+$width-md: 768px;
+$width-lg: 1024px;
+$width-xl: 1280px;
+$width-2xl: 1536px;
+
+$space-xs: var(--sl-spacing-x-small);
+$space-sm: var(--sl-spacing-small);
+$space-base: var(--sl-spacing-medium);
+$space-lg: var(--sl-spacing-large);
+$space-xl: var(--sl-spacing-x-large);
+
+:root {
+  --width-sm: $width-sm;
+  --width-md: $width-md;
+  --width-lg: $width-lg;
+  --width-xl: $width-xl;
+  --width-2xl: $width-2xl;
+  
+  --space-sm: $space-sm;
+  --space-md: $space-md;
+  --space-lg: $space-lg;
+  --space-xl: $space-xl;
+  --space-2xl: $space-2xl;
+}
+
+body {
+  font-family: var(--sl-font-sans);
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -0.5em;
+  list-style: none;
+  padding: 0;
+
+  > li {
+    flex: 1 0 10em;
+    margin: 0.5em;
+  }
+}
+
+.container {
+  display: block;
+  max-width: var(--width-2xl);
+  margin: auto;
+  padding: $space-sm $space-lg;
+
+  &--lg {
+    max-width: var(--width-lg);
+  }
+
+  &--md {
+    max-width: var(--width-md);
+  }
+
+  &--sm {
+    max-width: var(--width-sm);
+  }
+}
+
+@media only screen and (max-width: $width-sm) {
+  .container, .container--lg, .container--md, .container--sm {
+    padding: var(--space-sm);
+  }
+}
