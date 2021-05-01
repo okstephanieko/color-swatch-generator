@@ -20,7 +20,7 @@ const model = (value) => {
 
 const ColorSwatchContainer = (observable) => {
   const swatchWithState = withState(observable.pipe(
-    map((state) => model(state.baseColor).all(15)),
+    map((state) => model(state.baseColor).all(state.weight)),
     distinctUntilChanged(),
     map((swatch) => swatch.map((color) => html`${ColorSwatchItem(color)}`)),
   ));

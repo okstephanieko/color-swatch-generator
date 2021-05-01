@@ -7,8 +7,8 @@ import ColorOptionsContainer from './ColorOptionsContainer';
 import ColorSwatchContainer from './ColorSwatchContainer';
 
 const App = () => {
-  const { getObservable, changeBaseColor } = colorState();
-  const Header = ColorOptionsContainer(getObservable(), changeBaseColor);
+  const { getObservable, changeBaseColor, changeWeight } = colorState();
+  const Header = ColorOptionsContainer(getObservable(), changeBaseColor, changeWeight);
   const Content = ColorSwatchContainer(getObservable());
 
   return html`${AppLayout({ Header, Content })}`;
