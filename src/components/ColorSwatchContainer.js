@@ -6,7 +6,17 @@ import ColorSwatch from './ColorSwatch';
 import ColorSwatchItem from './ColorSwatchItem';
 import withState from './withState';
 
-const model = (value) => new Values(value);
+const model = (value) => {
+  const values = new Values(value);
+
+  return {
+    type: values.type,
+    weight: values.weight,
+    hex: values.hex,
+    all: (weight) => values.all(weight),
+    brightness: values.getBrightness(),
+  };
+};
 
 const ColorSwatchContainer = (observable) => {
   const swatchWithState = withState(observable.pipe(
