@@ -29,6 +29,16 @@ class Observer extends AsyncDirective {
 
     return noChange;
   }
+
+  disconnected() {
+    if (this.unsubscribe) {
+      this.unsubscribe();
+    }
+  }
+
+  reconnected() {
+    this.subscribe(this.observable);
+  }
 }
 
 export default directive(Observer);
