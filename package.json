@@ -6,7 +6,8 @@
   "scripts": {
     "start": "parcel index.html --open",
     "build": "parcel build index.html",
-    "test:unit": "mocha ./src/**/*.spec.js --require esm"
+    "test:unit": "mocha ./src/**/*.spec.js --require esm",
+    "test:integration": "mocha ./src/**/*.test.js --require esm"
   },
   "dependencies": {
     "@shoelace-style/shoelace": "^2.0.0-beta.38",
