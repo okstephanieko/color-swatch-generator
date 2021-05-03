@@ -1,15 +1,34 @@
 import { html } from 'lit-html';
+import { createRef, ref } from 'lit-html/directives/ref';
 
-import colorState from '../services/colorState';
+import swatchServices from '../services/swatch';
+import useSelector, { useTransformer } from '../hooks/useSelector';
+import makeListener from '../lib/makeListener';
+import swatchModel from '../models/swatch';
 
 import AppLayout from './AppLayout';
-import ColorOptionsContainer from './ColorOptionsContainer';
-import ColorSwatchContainer from './ColorSwatchContainer';
+import ColorOptionsForm from './ColorOptionsForm';
+import ColorOptionsPicker from './ColorOptionsPicker';
+import ColorSwatch from './ColorSwatch';
+import ColorSwatchAlert from './ColorSwatchAlert';
+import ColorSwatchItem from './ColorSwatchItem';
 
 const App = () => {
-  const { getObservable, changeBaseColor, changeWeight } = colorState();
-  const Header = ColorOptionsContainer(getObservable(), changeBaseColor, changeWeight);
-  const Content = ColorSwatchContainer(getObservable());
+  const trigger = createRef();
+
+  const { changeBase, changeWeight } = swatchServices;
+
+  const baseObservable = makeListener(useSelector((state) => state.swatch.base));
+  const swatchObservable = makeListener(useTransformer(
+    (swatch) => swatch.map((color) => html`${ColorSwatchItem(color, trigger)}`),
+  )(
+    (state) => swatchModel(state.swatch.base).all(state.weight),
+  ));
+
+  const Header = html`${ColorOptionsPicker(baseObservable, changeBase)}
+  ${ColorOptionsForm(baseObservable, changeBase, changeWeight)}`;
+  const Content = html`${ColorSwatch(swatchObservable)}
+  <div>${ColorSwatchAlert('success', ref(trigger))}</div>`;
 
   return html`${AppLayout({ Header, Content })}`;
 };
