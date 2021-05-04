@@ -24,7 +24,7 @@ const App = () => {
   const Header = html`${ColorOptionsPicker(baseObservable, changeBase)}
   ${ColorOptionsForm(baseObservable, changeBase, changeWeight)}`;
   const Content = html`${ColorSwatchList(swatchObservable)}
-  <div>${ColorSwatchAlert('success', ref(trigger))}</div>`;
+  ${ColorSwatchAlert('success', ref(trigger))}`;
 
   return html`${AppLayout({ Header, Content })}`;
 };
