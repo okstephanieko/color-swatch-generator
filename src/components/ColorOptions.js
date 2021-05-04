@@ -10,7 +10,7 @@ const ColorOptions = ({ colorValue: base, weight = 15 }, actions) => {
     <sl-color-picker
       name="base"
       .value=${base}
-      @sl-change=${(actions.onChange)}>
+      @sl-change=${(listeners.onChange)}>
     </sl-color-picker>
   </label>
   <label>
