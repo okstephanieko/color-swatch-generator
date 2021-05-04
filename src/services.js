@@ -1,5 +1,7 @@
-import store, { bindActionCreators } from '../store';
-import { actions } from '../store/modules/swatch';
+import { bindActionCreators } from './lib/store';
+
+import store from './store';
+import { actions } from './store/swatch';
 
 function changeBase(colorString) {
   return { type: actions.CHANGE_BASE, payload: colorString };

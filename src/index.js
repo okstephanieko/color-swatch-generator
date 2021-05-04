@@ -9,7 +9,7 @@ import '@shoelace-style/shoelace/dist/components/input/input';
 import '@shoelace-style/shoelace/dist/components/spinner/spinner';
 import '@shoelace-style/shoelace/dist/components/color-picker/color-picker';
 
-import App from './components/App';
+import App from './App';
 
 import './styles.scss';
 

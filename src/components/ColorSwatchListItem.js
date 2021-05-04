@@ -4,7 +4,7 @@ import { styleMap } from 'lit-html/directives/style-map';
 const reduceType = (type) => ((['base', 'tint', 'shade'].includes(type)) ? type : '');
 const reduceBrightness = (brightness) => ((brightness > 55) ? 'light' : 'dark');
 
-const ColorSwatchItem = ({
+const ColorSwatchListItem = ({
   type, weight, hex, brightness,
 }, ref) => {
   async function onClick() {
@@ -25,4 +25,4 @@ const ColorSwatchItem = ({
   `;
 };
 
-export default ColorSwatchItem;
+export default ColorSwatchListItem;

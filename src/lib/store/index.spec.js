@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 
-import { bindActionCreators, createStore } from './utils';
+import { bindActionCreators, createStore } from '.';
 
 describe('State management utilities', () => {
   let store;

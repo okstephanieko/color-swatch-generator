@@ -3,6 +3,8 @@ import {
   distinctUntilChanged, filter, map, scan,
 } from 'rxjs/operators';
 
+import useSelector from './hooks/useSelector';
+
 function createStore(modules = []) {
   const state$ = new BehaviorSubject(modules.reduce((state, module) => ({
     ...state,
@@ -66,4 +68,4 @@ function bindActionCreators(actionCreators, dispatch) {
   }), {});
 }
 
-export { bindActionCreators, createStore };
+export { bindActionCreators, createStore, useSelector };

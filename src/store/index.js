@@ -1,6 +1,9 @@
-import swatch from './modules/swatch';
-import { bindActionCreators, createStore } from './utils';
+import swatch from './swatch';
+import { createStore, useSelector as baseUseSelector } from '../lib/store';
 
-export default createStore([swatch]);
+const store = createStore([swatch]);
 
-export { bindActionCreators };
+const useSelector = baseUseSelector(store);
+
+export default store;
+export { useSelector };

@@ -1,8 +1,8 @@
 import { assert } from 'chai';
-import { distinctUntilChanged, map } from 'rxjs/operators';
+import { distinctUntilChanged } from 'rxjs/operators';
 
 import store from '.';
-import swatch, { actions } from './modules/swatch';
+import swatch, { actions } from './swatch';
 
 describe('returns default state', () => {
   let base, weight;
