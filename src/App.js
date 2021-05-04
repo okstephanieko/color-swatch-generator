@@ -5,7 +5,7 @@ import services from './services';
 import { useSelector } from './store';
 import makeListener from './lib/makeListener';
 
-import AppLayout from './AppLayout';
+import AppLayout from './components/AppLayout';
 import {
   ColorOptionsForm, ColorOptionsPicker, ColorSwatchAlert, ColorSwatchList, ColorSwatchListItem,
 } from './components';
