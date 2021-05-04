@@ -16,8 +16,9 @@ const App = () => {
   const { changeBase, changeWeight, getSwatch } = services;
 
   const baseObservable = makeListener(useSelector((state) => state.swatch.base));
+  const weightObservable = makeListener(useSelector((state) => state.swatch.weight));
   const swatchObservable = makeListener(useSelector(
-    (state) => getSwatch(state.swatch.base, state.weight),
+    (state) => getSwatch(state.swatch.base, state.swatch.weight),
     (swatch) => swatch.map((color) => html`${ColorSwatchListItem(color, trigger)}`),
   ));
 
@@ -26,7 +27,10 @@ const App = () => {
     changeWeight,
   };
 
-  const Header = html`${ColorOptions(baseObservable, actions)}`;
+  const Header = html`${ColorOptions({
+    colorValue: baseObservable,
+    weight: weightObservable,
+  }, actions)}`;
   const Content = html`${ColorSwatchList(swatchObservable)}
   ${ColorSwatchAlert('success', ref(trigger))}`;
 

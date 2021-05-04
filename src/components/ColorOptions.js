@@ -2,7 +2,7 @@ import { html } from 'lit-html';
 
 import useColorOptions from './useColorOptions';
 
-const ColorOptions = ({ colorValue: base, weight = 15 }, actions) => {
+const ColorOptions = ({ colorValue: base, weight }, actions) => {
   const { listeners } = useColorOptions(actions);
 
   return html`<label>
