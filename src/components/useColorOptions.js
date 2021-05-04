@@ -11,16 +11,10 @@ function useColorOptions(actions) {
     }
   }
 
-  function onSubmit(event) {
-    event.preventDefault();
-    actions.changeBase(event.target.value);
-  }
-
   return {
     listeners: {
       onChange,
       onBlur,
-      onSubmit,
     },
   };
 }
