@@ -4,7 +4,6 @@ import { createRef, ref } from 'lit-html/directives/ref';
 import services from './services';
 import { useSelector } from './store';
 import makeListener from './lib/makeListener';
-import swatchModel from './models/swatch';
 
 import AppLayout from './AppLayout';
 import {
@@ -14,11 +13,11 @@ import {
 const App = () => {
   const trigger = createRef();
 
-  const { changeBase, changeWeight } = services;
+  const { changeBase, changeWeight, getSwatch } = services;
 
   const baseObservable = makeListener(useSelector((state) => state.swatch.base));
   const swatchObservable = makeListener(useSelector(
-    (state) => swatchModel(state.swatch.base).all(state.weight),
+    (state) => getSwatch(state.swatch.base, state.weight),
     (swatch) => swatch.map((color) => html`${ColorSwatchListItem(color, trigger)}`),
   ));
 

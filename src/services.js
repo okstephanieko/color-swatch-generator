@@ -1,3 +1,5 @@
+import Values from 'values.js';
+
 import { bindActionCreators } from './lib/store';
 
 import store from './store';
@@ -11,7 +13,23 @@ function changeWeight(weightValue) {
   return { type: actions.CHANGE_WEIGHT, payload: weightValue };
 }
 
-export default bindActionCreators({
-  changeBase,
-  changeWeight,
-}, store.dispatch);
+function getSwatch(value, weightValue) {
+  const values = new Values(value);
+
+  return values.all(weightValue).map((child) => ({
+    type: child.type,
+    weight: child.weight,
+    hex: `#${child.hex}`,
+    brightness: child.getBrightness(),
+  }));
+}
+
+const services = {
+  ...bindActionCreators({
+    changeBase,
+    changeWeight,
+  }, store.dispatch),
+  getSwatch,
+};
+
+export default services;
