@@ -2,7 +2,7 @@ import { html } from 'lit-html';
 import { createRef, ref } from 'lit-html/directives/ref';
 
 import swatchServices from '../services/swatch';
-import useSelector from '../hooks/useSelector';
+import useSelector from '../lib/hooks/useSelector';
 import makeListener from '../lib/makeListener';
 import swatchModel from '../models/swatch';
 
