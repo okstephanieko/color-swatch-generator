@@ -7,7 +7,7 @@ import makeListener from './lib/makeListener';
 
 import AppLayout from './components/AppLayout';
 import {
-  ColorOptionsForm, ColorOptionsPicker, ColorSwatchAlert, ColorSwatchList, ColorSwatchListItem,
+  ColorOptions, ColorSwatchAlert, ColorSwatchList, ColorSwatchListItem,
 } from './components';
 
 const App = () => {
@@ -21,8 +21,12 @@ const App = () => {
     (swatch) => swatch.map((color) => html`${ColorSwatchListItem(color, trigger)}`),
   ));
 
-  const Header = html`${ColorOptionsPicker(baseObservable, changeBase)}
-  ${ColorOptionsForm(baseObservable, changeBase, changeWeight)}`;
+  const actions = {
+    changeBase,
+    changeWeight,
+  };
+
+  const Header = html`${ColorOptions(baseObservable, actions)}`;
   const Content = html`${ColorSwatchList(swatchObservable)}
   ${ColorSwatchAlert('success', ref(trigger))}`;
 
