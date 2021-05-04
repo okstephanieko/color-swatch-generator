@@ -2,13 +2,9 @@ import { map } from 'rxjs/operators';
 
 import store from '../store';
 
-const useSelector = (cb) => store.getState().pipe(
-  map((state) => cb(state)),
-);
-
-const useTransformer = (operation) => (cb) => useSelector(cb).pipe(
-  map((value) => operation(value)),
-);
+const useSelector = (...operations) => {
+  const rxOperations = operations.map((cb) => map((state) => cb(state)));
+  return store.getState().pipe(...rxOperations);
+};
 
 export default useSelector;
-export { useTransformer };
